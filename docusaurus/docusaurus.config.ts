@@ -16,15 +16,17 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://docs.codacy.com',
+  // once we configure it to be in docs.codacy.com, we change this to "docs.codacy.com"
+  url: 'https://codacy.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  // once we configure it to be in docs.codacy.com, we change this to "/"
+  baseUrl: '/docs-docusaurus/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Codacy', // Usually your GitHub org/user name.
-  projectName: 'docs', // Usually your repo name.
+  projectName: 'docs-docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'warn',
   markdown: {

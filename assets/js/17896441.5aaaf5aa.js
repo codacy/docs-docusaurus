@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkdocusaurus=globalThis.webpackChunkdocusaurus||[]).push([[8401],{88868(u,s,a){a.d(s,{A:()=>n});a(96540);var r=a(47840),c=a(74848);function n(u){return(0,c.jsx)(c.Fragment,{children:(0,c.jsx)(r.A,{...u})})}}}]);

@@ -3,7 +3,7 @@ title: Uploading DAST results to Codacy
 description: Instructions on how to upload DAST results to Codacy using the API.
 ---
 
-To ensure the security of your web applications, Codacy allows you to upload DAST (dynamic application security testing) results from [Zed Attack Proxy (ZAP)](https://www.zaproxy.org/) directly to Codacy and monitor them as findings under [Security and risk management](../../organizations/managing-security-and-risk.md).
+To ensure the security of your web applications, Codacy allows you to upload DAST (dynamic application security testing) results from [Zed Attack Proxy (ZAP)](https://www.zaproxy.org/) directly to Codacy and monitor them as findings under [Security and risk management](../../organizations/managing-security-and-risk).
 
 ## Uploading results to Codacy
 
@@ -28,7 +28,7 @@ To ensure the security of your web applications, Codacy allows you to upload DAS
 
 Replace the placeholders with your own values:
 
--   **API_KEY:** [Account API token](../api-tokens.md#account-api-tokens) used to authenticate on the Codacy API.
+-   **API_KEY:** [Account API token](../api-tokens#account-api-tokens) used to authenticate on the Codacy API.
 -   **GIT_PROVIDER:** Git provider hosting of the organization, using one of the values in the table below. For example, `gh` for GitHub Cloud.
 
     | Value | Git provider      |
@@ -62,7 +62,7 @@ curl -X GET https://api.codacy.com/api/v3/organizations/<GIT_PROVIDER>/<ORGANIZA
 
 Replace the placeholders with your own values:
 
--   **API_KEY:** [Account API token](../api-tokens.md#account-api-tokens) used to authenticate on the Codacy API.
+-   **API_KEY:** [Account API token](../api-tokens#account-api-tokens) used to authenticate on the Codacy API.
 -   **GIT_PROVIDER:** Git provider hosting of the organization, using one of the values in the table below. For example, `gh` for GitHub Cloud.
 
     | Value | Git provider      |
@@ -84,7 +84,7 @@ Use this example Bash script to upload the ZAP DAST report to Codacy. This examp
 
 The example script:
 
-1.  Defines the [API token](../api-tokens.md#account-api-tokens) used to authenticate on the Codacy API.
+1.  Defines the [API token](../api-tokens#account-api-tokens) used to authenticate on the Codacy API.
 1.  Defines the path and filename of the file containing the DAST report.
 1.  Calls the endpoint [<span class="skip-vale">uploadDASTReport</span>](https://app.codacy.com/api/api-docs#uploaddastreport) to upload the report to Codacy.
 

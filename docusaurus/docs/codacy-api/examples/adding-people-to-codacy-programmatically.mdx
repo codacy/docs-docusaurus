@@ -16,7 +16,7 @@ curl -X POST https://app.codacy.com/api/v3/organizations/<GIT_PROVIDER>/<ORGANIZ
 
 Substitute the placeholders with your own values:
 
--   **API_KEY:** [Account API token](../api-tokens.md#account-api-tokens) used to authenticate on the Codacy API.
+-   **API_KEY:** [Account API token](../api-tokens#account-api-tokens) used to authenticate on the Codacy API.
 -   **GIT_PROVIDER:** Git provider hosting of the organization, using one of the values in the table below. For example, `gh` for GitHub Cloud.
 
     | Value | Git provider      |
@@ -39,7 +39,7 @@ We provide an example Bash script that adds all emails in a text file to Codacy.
 
 The example script:
 
-1.  Defines the [account API token](../api-tokens.md#account-api-tokens) used to authenticate on the Codacy API.
+1.  Defines the [account API token](../api-tokens#account-api-tokens) used to authenticate on the Codacy API.
 1.  Defines the path and filename of the file containing the email addresses list.
 1.  Uses `awk` and `sed` to read the email addresses list from a file.
 1.  Calls the endpoint [addPeopleToOrganization](https://app.codacy.com/api/api-docs#addpeopletoorganization) to add a list of email addresses to Codacy.
@@ -70,4 +70,4 @@ email4@codacy.com
 
 ## See also
 
-- [Adding people to your organization](/organizations/managing-people/#adding-people)
+- [Adding people to your organization](../../organizations/managing-people#adding-people)

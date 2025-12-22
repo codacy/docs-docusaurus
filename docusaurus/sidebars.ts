@@ -72,12 +72,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Coverage reporter',
-      items: coverageReporterOrder,
-    },
-    {
-      type: 'category',
-      label: 'FAQ',
+      label: 'Troubleshooting & FAQs',
       items: faqOrder,
     },
     'special-thanks',

@@ -24,7 +24,7 @@ Complete these main steps to set up coverage for your repository:
 
 The next sections include detailed instructions on how to complete each step of the setup process.
 
-## 1. Generating coverage reports
+## 1. Generating coverage reports \{#generating-coverage\}
 Before setting up Codacy to display code coverage metrics for your repository you must have tests and use tools to generate coverage reports for the source code files in your repository.
 
 Consider the following when generating coverage reports for your repository:
@@ -129,7 +129,7 @@ If you're generating a report format that Codacy doesn't support yet, [contribut
 -   [<span class="skip-vale">danielpalme/ReportGenerator</span>](https://github.com/danielpalme/ReportGenerator): convert between different report formats
 
 :::caution
-Make sure that you [specify the language](uploading-coverage-in-advanced-scenarios.md#unsupported-languages) when uploading coverage for an unsupported language.
+Make sure that you [specify the language](./uploading-coverage-in-advanced-scenarios.md#unsupported-languages) when uploading coverage for an unsupported language.
 :::
 
 As a last resort, you can also send the coverage data directly by calling one of the following Codacy API endpoints:
@@ -137,7 +137,7 @@ As a last resort, you can also send the coverage data directly by calling one of
 -   [<span class="skip-vale">saveCoverage</span>](https://api.codacy.com/swagger#savecoverage)
 -   [saveCoverageWithAccountToken](https://api.codacy.com/swagger#savecoveragewithaccounttoken)
 
-## 2. Uploading coverage data to Codacy
+## 2. Uploading coverage data to Codacy \{#uploading-coverage\}
 After having coverage reports set up for your repository, you must use the Codacy Coverage Reporter to upload them to Codacy. The recommended way to do this is by using a CI/CD platform that automatically runs tests, generates coverage, and then uses the Codacy Coverage Reporter to upload the coverage report information to Codacy.
 
 :::caution
@@ -149,20 +149,20 @@ Please note that Codacy needs to receive coverage data for:
 :::
 
 :::note[Alternative ways of running the Codacy Coverage Reporter]
-Codacy makes available [alternative ways to run the Codacy Coverage Reporter](alternative-ways-of-running-coverage-reporter.md), such as by installing the binary manually or by using Docker, a GitHub Action, or a CircleCI Orb.
+Codacy makes available [alternative ways to run the Codacy Coverage Reporter](./alternative-ways-of-running-coverage-reporter), such as by installing the binary manually or by using Docker, a GitHub Action, or a CircleCI Orb.
 
-However, the instructions on this page assume that you'll run the recommended [self-contained bash script `get.sh`](alternative-ways-of-running-coverage-reporter.md#bash-script) to automatically download and run the most recent version of the Codacy Coverage Reporter.
+However, the instructions on this page assume that you'll run the recommended [self-contained bash script `get.sh`](./alternative-ways-of-running-coverage-reporter#bash-script) to automatically download and run the most recent version of the Codacy Coverage Reporter.
 
 :::
 
 1.  Set up an API token to allow Codacy Coverage Reporter to authenticate on Codacy:
-    -   **If you're setting up coverage for one repository**, [obtain a repository API token](../codacy-api/api-tokens.md#repository-api-tokens) and set the following environment variable to specify your repository API token:
+    -   **If you're setting up coverage for one repository**, [obtain a repository API token](../codacy-api/api-tokens#repository-api-tokens) and set the following environment variable to specify your repository API token:
 
         ```bash
         export CODACY_PROJECT_TOKEN=<your repository API token>
         ```
 
-    -   **If you're setting up and automating coverage for multiple repositories**, [obtain an account API Token](../codacy-api/api-tokens.md#account-api-tokens) and set the following environment variables:
+    -   **If you're setting up and automating coverage for multiple repositories**, [obtain an account API Token](../codacy-api/api-tokens#account-api-tokens) and set the following environment variables:
 
         -   **CODACY_API_TOKEN:** Your account API token.
 
@@ -206,7 +206,7 @@ However, the instructions on this page assume that you'll run the recommended [s
     Be sure to also check the [instructions for more advanced scenarios](uploading-coverage-in-advanced-scenarios.md) while uploading the coverage data to Codacy, such as when running parallel tests, using monorepos, or testing source code in multiple or unsupported languages.
     :::
 
-## 3. Validating that the coverage setup is complete
+## 3. Validating that the coverage setup is complete \{#validating-coverage\}
 Codacy displays the code coverage in each branch, as well as the evolution of code coverage between commits and the code coverage variation introduced by pull requests.
 
 Because of this, to ensure that all code coverage metrics are available on Codacy, you must have successfully uploaded coverage data and analyzed:
@@ -237,7 +237,7 @@ Follow these instructions to validate that your coverage setup is working correc
 
     If there are commits with a status different from **Processed**, please follow the troubleshooting instructions for the corresponding error status and click the button **Test integration** to display any new coverage reports uploaded to Codacy.
 
-    ### Commit not found
+    ### Commit not found \{#status-commit-not-found\}
     Codacy doesn't have information about the commit associated with the coverage data.
 
     <table>
@@ -272,7 +272,7 @@ Follow these instructions to validate that your coverage setup is working correc
 	    </tbody>
 	    </table>
 
-    ### Branch not enabled
+    ### Branch not enabled \{#status-branch-not-enabled\}
     The commit associated with the coverage data doesn't belong to any branch that Codacy is analyzing.
 
     <table>
@@ -307,7 +307,7 @@ Follow these instructions to validate that your coverage setup is working correc
     </tbody>
     </table>
 
-    ### Commit not analyzed
+    ### Commit not analyzed \{#status-commit-not-analyzed\}
     Due to technical limitations, Codacy only reports coverage for a commit after successfully completing the static code analysis of that commit.
 
     <table>
@@ -335,7 +335,7 @@ Follow these instructions to validate that your coverage setup is working correc
             Codacy didn't analyze the commit on a private repository because the committer doesn't belong to the Codacy organization.
         </td>
         <td>
-            Make sure that you <a href="../organizations/managing-people/#adding-people">add all committers to your Codacy organization</a>.
+            Make sure that you <a href="../organizations/managing-people#adding-people">add all committers to your Codacy organization</a>.
         </td>
     </tr>
     <tr>
@@ -365,7 +365,7 @@ Follow these instructions to validate that your coverage setup is working correc
     </tbody>
     </table>
 
-    ### Final report not sent
+    ### Final report not sent \{#status-final-report-not-sent\}
     Codacy is waiting to receive more coverage data before reporting the coverage for a commit.
 
     <table>
@@ -391,7 +391,7 @@ Follow these instructions to validate that your coverage setup is working correc
 	    </tbody>
 	    </table>
 
-    ### Pending
+    ### Pending \{#status-pending\}
     Codacy is waiting to receive valid coverage data for the files in your repository.
 
     <table>
@@ -448,7 +448,7 @@ Follow these instructions to validate that your coverage setup is working correc
 
     ![Commits that must have received coverage data](images/coverage-pr-commits.png)
 
-    Click **View logs** on a pull request detail page to see the SHA-1 hashes of the commits that are missing coverage data. If you have many open pull requests, you can also use a script to [identify if any pull requests are missing coverage data](../codacy-api/examples/identifying-commits-without-coverage-data.md).
+    Click **View logs** on a pull request detail page to see the SHA-1 hashes of the commits that are missing coverage data. If you have many open pull requests, you can also use a script to [identify if any pull requests are missing coverage data](../codacy-api/examples/identifying-commits-without-coverage-data).
 
     ![Logs showing the pull request commits that are missing coverage data](images/coverage-codacy-ui-logs.png)
 
@@ -466,5 +466,5 @@ If you need help setting up coverage on your repository please contact us at [su
 
 ## See also
 
--   [Identifying commits without coverage data](../codacy-api/examples/identifying-commits-without-coverage-data.md)
--   [Why does Codacy show unexpected coverage changes?](../faq/code-analysis/why-does-codacy-show-unexpected-coverage-changes.md)
+-   [Identifying commits without coverage data](../codacy-api/examples/identifying-commits-without-coverage-data)
+-   [Why does Codacy show unexpected coverage changes?](../faq/code-analysis/why-does-codacy-show-unexpected-coverage-changes)

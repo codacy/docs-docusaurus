@@ -1,5 +1,5 @@
 .footer {
-  --footer-bg: var(--ifm-color-emphasis-300);
+  --footer-bg: var(--ifm-color-gray-200);
   --footer-text: var(--ifm-color-emphasis-800);
   --footer-link: var(--ifm-color-emphasis-800);
   --footer-gap: 2rem;

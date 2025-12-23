@@ -1,8 +1,9 @@
 ---
 title: How to customize the analysis rules for Codacy Guardrails
+sidebar_label: Customizing analysis rules
 ---
 
-By default, if no API token is provided in the [MCP Server setup](codacy-guardrails-getting-started.md/#3-install-mcp-server), Codacy uses a predefined configuration that includes all recommended rules (or [code patterns](../repositories-configure/configuring-code-patterns.md) that you can find on many parts of our product) from the supported built-in scanners.
+By default, if no API token is provided in the [MCP Server setup](codacy-guardrails-getting-started#3-install-mcp-server), Codacy uses a predefined configuration that includes all recommended rules (or [code patterns](../repositories-configure/configuring-code-patterns) that you can find on many parts of our product) from the supported built-in scanners.
 
 However, when an API token is used, Codacy automatically retrieves the current rule configuration directly from your repository.
 
@@ -67,13 +68,13 @@ The table below lists the configuration file names that Codacy detects and suppo
 
 To use a configuration file for a static analysis tool:
 
-1.  Make sure the configuration file is located in the root of the [default Codacy branch](../repositories-configure/managing-branches.mdx).
+1.  Make sure the configuration file is located in the root of the [default Codacy branch](../repositories-configure/managing-branches).
 
 2.  Open the repository **Code patterns** page, select the tool of interest, and activate the toggle to use a configuration file.
 
 :::note
--   After activating a configuration file for a tool, Codacy uses that configuration file even if you [exclude it from Codacy analysis](../repositories-configure/ignoring-files.md).
--   When [using a tool configuration file alongside a coding standard](../organizations/using-coding-standards.md#using-with-tool-configuration), the configuration file controls the code patterns, while the coding standard controls whether the tool is enabled or disabled.
+-   After activating a configuration file for a tool, Codacy uses that configuration file even if you [exclude it from Codacy analysis](../repositories-configure/ignoring-files).
+-   When [using a tool configuration file alongside a coding standard](../organizations/using-coding-standards#using-with-tool-configuration), the configuration file controls the code patterns, while the coding standard controls whether the tool is enabled or disabled.
 -   Codacy uses the version of the configuration file **in the branch being analyzed**. For example, if you open a pull request that includes changes to the configuration file, the analysis results take those changes into account.
 -   If Codacy analyzes a branch that doesn't include the configuration file, Codacy reverts to using the code patterns configured for the tool before you selected the option **Configuration file** on the Code patterns page.
 -   For performance reasons, when you update pattern settings using a configuration file, Codacy may display outdated messages for issues identified previously by those patterns.
@@ -88,8 +89,8 @@ To use a configuration file for a static analysis tool:
 
 If you want to use Codacy UI, there are two ways you can follow to configure the built-in scanner rules:
 
--  Using the [Code Patterns](../repositories-configure/configuring-code-patterns.md) configuration, if you want to configure the rules per repository or
--  Using [Coding Standards](../organizations/using-coding-standards.md), if you want to configure the rules for multiple repositories
+-  Using the [Code Patterns](../repositories-configure/configuring-code-patterns) configuration, if you want to configure the rules per repository or
+-  Using [Coding Standards](../organizations/using-coding-standards), if you want to configure the rules for multiple repositories
 
 ### Code Patterns
 
@@ -106,7 +107,7 @@ In order to set up your rules, please follow the next steps:
 
     ![Toggling tools](images/code-patterns-toggle-tools.png)
 
-3.  Select a tool to enable or disable its code patterns. To make it easier to find relevant patterns, use the filters above the pattern list. You can filter by [issue category](../faq/code-analysis/which-metrics-does-codacy-calculate.md#issues), status, severity level, or display only recommended code patterns.
+3.  Select a tool to enable or disable its code patterns. To make it easier to find relevant patterns, use the filters above the pattern list. You can filter by [issue category](../faq/code-analysis/which-metrics-does-codacy-calculate#issues), status, severity level, or display only recommended code patterns.
 
     To see an explanation of the issues that a pattern detects and how to fix them, click the respective dropdown arrow.
 
@@ -122,7 +123,7 @@ In order to set up your rules, please follow the next steps:
 
 Coding standards enable the analysis of multiple repositories with the same scanner and rules configurations, ensuring consistent code quality across your organization. Multiple coding standards can be applied to the same repository. For example, you can use coding standards to ensure that a group of repositories follow the same security rules or coding conventions.
 
-To apply or edit a repository's [coding standards](../organizations/using-coding-standards.md), click **Customize** in the **Following ...** section at the top of the **Code patterns** page.
+To apply or edit a repository's [coding standards](../organizations/using-coding-standards), click **Customize** in the **Following ...** section at the top of the **Code patterns** page.
 
 ![Customize applied coding standards](images/code-patterns-cs-customize.png)
 

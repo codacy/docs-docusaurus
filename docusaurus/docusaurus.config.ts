@@ -59,7 +59,7 @@ const config: Config = {
       'classic',
       {
         docs: {
-          routeBasePath: '/docs',
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           breadcrumbs: false,
         },
@@ -131,8 +131,8 @@ const config: Config = {
         {
           title: 'Docs',
           items: [
-            {label: 'Documentation', to: '/docs/'},
-            {label: 'Release notes', to: '/docs/release-notes/'},
+            {label: 'Documentation', to: '/'},
+            {label: 'Release notes', to: '/release-notes/'},
           ],
         },
         {

@@ -5,7 +5,7 @@ description: Example of how to create new repository API tokens for all reposito
 import ApiExamplePaginationImportant from '../../_includes/ApiExamplePaginationImportant.mdx'
 
 
-To create new [repository API tokens](../api-tokens.md) for your Codacy repositories programmatically, use the Codacy API endpoint [createRepositoryApiToken](https://app.codacy.com/api/api-docs#createrepositoryapitoken). You can also list all repository API tokens for a repository using the endpoint [listRepositoryApiTokens](https://api.codacy.com/api/api-docs#listrepositoryapitokens).
+To create new [repository API tokens](../api-tokens) for your Codacy repositories programmatically, use the Codacy API endpoint [createRepositoryApiToken](https://app.codacy.com/api/api-docs#createrepositoryapitoken). You can also list all repository API tokens for a repository using the endpoint [listRepositoryApiTokens](https://api.codacy.com/api/api-docs#listrepositoryapitokens).
 
 For example, if you're [setting up coverage](../../coverage-reporter/index.md) for all your repositories and prefer not to use a single account API token that grants the same permissions as an administrator, you need to create an individual repository API token for each repository.
 
@@ -15,7 +15,7 @@ This example creates a new repository API token for a repository and outputs the
 
 The example script:
 
-1.  Defines the [account API token](../api-tokens.md#account-api-tokens) used to authenticate on the Codacy API, the Git provider, the organization name, and the repository name passed as an argument to the script.
+1.  Defines the [account API token](../api-tokens#account-api-tokens) used to authenticate on the Codacy API, the Git provider, the organization name, and the repository name passed as an argument to the script.
 1.  Calls the endpoint [createRepositoryApiToken](https://app.codacy.com/api/api-docs#createrepositoryapitoken) to create a new repository API token and uses [jq](https://github.com/stedolan/jq) to obtain only the created token string.
 
 ```bash
@@ -95,7 +95,7 @@ This example lists all repository API tokens created for a repository.
 
 The example script:
 
-1.  Defines the [account API token](../api-tokens.md#account-api-tokens) used to authenticate on the Codacy API, the Git provider, the organization name, and the repository name passed as an argument to the script.
+1.  Defines the [account API token](../api-tokens#account-api-tokens) used to authenticate on the Codacy API, the Git provider, the organization name, and the repository name passed as an argument to the script.
 1.  Calls the endpoint [listRepositoryApiTokens](https://api.codacy.com/api/api-docs#listrepositoryapitokens) to list the repository API tokens available on the repository and uses [jq](https://github.com/stedolan/jq) to obtain only the token strings, or exit with a non-zero status if the repository doesn't have any repository API tokens created yet.
 
 ```bash

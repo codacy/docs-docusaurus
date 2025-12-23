@@ -1,0 +1,391 @@
+---
+title: Supported languages and tools
+description: List of tools that Codacy uses to analyze over 40 supported languages. Codacy provides static analysis for all programming languages and cloud infrastructure-as-code platforms as well as code duplication, code complexity, and code coverage metrics for most programming languages.
+---
+<div class="languages-table">
+
+Codacy uses industry-leading tools to perform automatic static code analysis over 40 supported languages:
+
+-   **For programming languages**, Codacy provides static analysis as well as code duplication, code complexity, secret detection, dependency vulnerability scanning, and code coverage metrics for key languages.
+
+-   **For cloud infrastructure-as-code platforms**, Codacy provides static analysis and secret detection to enforce security and compliance best practices.
+
+The table below lists all languages that Codacy supports and the corresponding tools that Codacy uses to analyze your source code. Besides this, Codacy uses [cloc](https://github.com/kentcdodds/cloc) to calculate the source lines of code for all supported languages and supports multiple [code coverage report formats](../coverage-reporter/index.mdx#generating-coverage).
+
+{/*<!--NOTE
+    When adding a new supported tool, make sure that you update the following pages:
+
+    docs/getting-started/supported-languages-and-tools.md
+    docs/repositories-configure/local-analysis/client-side-tools.md (if the tool runs client-side)
+    docs/organizations/managing-security-and-risk.md  (if the tool reports security issues)
+    docs/repositories-configure/configuring-code-patterns.md (supported configuration files table, or list of tools that don't support configuration files)
+    docs/repositories-configure/codacy-configuration-file.md (list of tool short names to use on the Codacy configuration file)
+-->*/}
+
+:::caution
+Codacy runs security and other analysis tools when code changes are pushed to your repositories. These tools don't scan code for issues continuously.
+:::
+
+## Supported languages and tools
+
+### Quality scanning
+
+
+
+| Language | Static analysis | Duplication[^1] | Complexity[^1] | Suggested fixes | 
+|---|---|---|---|---|
+| Apex <br />`.cls` `.trigger` | PMD, Semgrep | PMD CPD | - | - |
+| AsyncAPI | Spectral | - | - | - |
+| AWS CloudFormation | Checkov | - | - | - |
+| Azure Resource Manager Templates | Checkov | - | - | - |
+| C <br />`.c` `.h` | Clang-Tidy[^client-side], Cppcheck[^cppcheck-misra], Flawfinder, Semgrep | PMD CPD | Lizard | Semgrep |
+| C++ <br />`.cpp` `.hpp` `.cc` `.cxx` `.ino` | Clang-Tidy[^client-side], Cppcheck[^cppcheck-misra], Flawfinder, Semgrep | PMD CPD | Lizard | - |
+| C# <br />`.cs` | Semgrep, SonarC# | PMD CPD | Lizard | Semgrep |
+| CoffeeScript <br />`.coffee` | CoffeeLint | jscpd | - | - |
+| Crystal <br />`.cr` | Ameba | - | - | - |
+| CSS <br />`.css` | Stylelint | - | - | - |
+| Dart <br />`.dart` | dartanalyzer[^dart-limitations] | jscpd | - | - |
+| Dockerfile <br />`.dockerfile` | Hadolint, Semgrep | - | - | Semgrep |
+| Elixir <br />`.ex` `.exs` | Credo, Semgrep | jscpd | - | - |
+| GitHub Actions | Semgrep | - | - | - |
+| Go <br />`.go` | aligncheck[^client-side], deadcode[^client-side], Gosec[^client-side], Revive, Semgrep, Staticcheck[^client-side] | PMD CPD | Lizard | Semgrep |
+| Groovy <br />`.groovy` | CodeNarc | jscpd | - | - |
+| Java <br />`.java` | Checkstyle, PMD, Semgrep, SpotBugs[^client-side] | jscpd | Lizard | Semgrep |
+| JavaScript <br />`.js` `.jsx` `.jsm` `.vue` `.mjs` | ESLint, PMD, Semgrep | PMD CPD | Lizard | ESLint |
+| JSON <br />`.json` | Jackson Linter | - | - | - |
+| JSP <br />`.jsp` | PMD | PMD CPD | - | - |
+| Kotlin <br />`.kt` `.kts` | detekt, Semgrep, PMD | jscpd | detekt | - |
+| Kubernetes | Checkov, Semgrep | - | Lizard | Semgrep |
+| Less <br />`.less` | Stylelint | - | - | - |
+| Markdown <br />`.md` `.markdown` `.mdown` `.mkdn` `.mkd` `.mdwn` `.mkdown` `.ron` | remark-lint, markdownlint | - | - | markdownlint |
+| Objective-C <br />`.m` | Clang-Tidy[^client-side] | jscpd | Lizard | - |
+| OpenAPI | Spectral | - | - | - |
+| PHP <br />`.php` | PHP_CodeSniffer, PHP Mess Detector, Semgrep | PHPCPD | Lizard | - |
+| PL/SQL <br />`.trg` `.prc` `.fnc` `.pld` `.pls` `.plh` `.plb` `.pck` `.pks` `.pkh` `.pkb` `.typ` `.tyb` `.tps` `.tpb` | PMD | - | - | - |
+| PostgreSQL | SQLint | - | - | - |
+| PowerShell <br />`.ps1` `.psc1` `.psd1` `.psm1` `.ps1xml` `.pssc` `.cdxml` `.clixml` | PSScriptAnalyser | - | - | - |
+| Python <br />`.py` | Bandit, Prospector, Pylint, Ruff, Semgrep | PMD CPD | Lizard | Semgrep |
+| Ruby <br />`.rb` `.gemspec` `.podspec` `.jbuilder` `.rake` `.opal` | Reek, Brakeman[^semgrep-brakeman], RuboCop, Semgrep | Flay | Lizard | Semgrep |
+| Rust <br />`.rs` `.rlib` | Semgrep | jscpd | Lizard | - |
+| Sass <br />`.scss` | Stylelint | - | - | - |
+| Scala <br />`.scala` | Codacy Scalameta Pro, Scalastyle, Semgrep, SpotBugs[^client-side] | PMD CPD | Lizard | - |
+| Serverless Framework | Checkov | - | - | - |
+| Shell <br />`.sh` `.bash` | ShellCheck, Semgrep | - | - | - |
+| Swift <br />`.swift` | Semgrep, SwiftLint, PMD | PMD CPD | Lizard | - |
+| SQL <br />`.sql` | PMD, SQLint, TSQLLint, SQLFluff, Semgrep | - | - | - |
+| Terraform <br />`.tf` | Checkov, Semgrep | - | - | - |
+| Transact-SQL <br />`.tsql` | TSQLLint | - | - | - |
+| TypeScript <br />`.ts` `.tsx` | ESLint, Semgrep | jscpd | Lizard | ESLint |
+| Unity | Unity Roslyn Analyzers[^client-side] | - | - | - |
+| Velocity <br />`.vm` | PMD | - | - | - |
+| Visual Basic <br />`.vb` | SonarVB | jscpd | - | - |
+| Visualforce <br />`.component` `.page` | PMD | PMD CPD | - | - |
+| XML <br />`.xml` `.xsl` `.wsdl` `.pom` | PMD | - | - | - |
+| XSL <br />`.xsl` | PMD | - | - | - |
+| YAML <br />`.yaml` `.yml` `.env` `.env.production` `.env.prod` `.env.staging` `.env.dev` `.env.development` | - | - | - | - |
+
+[^1]: Complexity and duplication are calculated per commit by default and do not require any tools. When Complexity and Duplication appear in the Quality analysis section, they refer to tools that support Complexity or Duplication analysis and are able to trigger issues based on your configuration.
+
+{/*
+### Security static scanning
+*/}
+
+### Secret scanning
+
+| Language | Tools |
+| --- | --- |
+| Apex | Semgrep |
+| AWS CloudFormation | Checkov, Semgrep, Trivy |
+| C | Semgrep, Trivy |
+| C++ | Semgrep, Trivy |
+| C# | Semgrep, Trivy |
+| Dart | Trivy |
+| Dockerfile | Semgrep, Trivy |
+| Elixir | Trivy |
+| GitHub Actions | Semgrep, Trivy |
+| Go | Semgrep, Trivy |
+| Java | PMD, Semgrep, Trivy |
+| JavaScript | Semgrep, Trivy |
+| JSON | Checkov, Trivy |
+| Kotlin | Semgrep |
+| Kubernetes | Checkov, Semgrep, Trivy |
+| PHP | Semgrep, Trivy |
+| Python | Bandit, Prospector, Semgrep, Trivy |
+| Ruby | Semgrep, Trivy |
+| Rust | Semgrep, Trivy |
+| Scala | Semgrep, Trivy |
+| Shell | Semgrep |
+| Swift | Semgrep, Trivy |
+| Terraform | Checkov, Semgrep, Trivy |
+| TypeScript | Semgrep, Trivy |
+| XML | Trivy |
+| YAML | Trivy |
+
+### Dependency vulnerability scanning
+
+| Language | Extensions | Tools |
+| --- | --- | --- |
+| C | `conan.lock` (Conan) | Trivy |
+| C++ | `conan.lock` (Conan) | Trivy, scans |
+| C# | `.deps.json` (.Net), `packages.lock.json` (NuGet) | Trivy |
+| Dart | `pubspec.lock` | Trivy |
+| Elixir | `mix.lock` (Mix) | Trivy, scans  |
+| Go | `go.mod` | Trivy |
+| Java | `pom.xml`, `gradle.lockfile` | Trivy |
+| JavaScript | `package.json`, `package-lock.json` (npm), `yarn.lock` (Yarn) | Trivy |
+| Kotlin | `pom.xml`, `gradle.lockfile` | Trivy |
+| PHP | `composer.lock` (Composer) | Trivy |
+| Python | `requirements.txt` (pip), `Pipfile.lock` (pipenv), `poetry.lock` (Poetry), `uv.lock` (UV) | Trivy |
+| Ruby | `Gemfile.lock` (Bundler) | Trivy |
+| Rust | `Cargo.lock` (Cargo) | Trivy |
+| Scala | `build.sbt.lock` (sbt) | Trivy |
+| Swift | `Package.resolved` (SwiftPM) | Trivy  |
+| TypeScript | `package.json`, `package-lock.json` (npm), `yarn.lock` (Yarn) | Trivy |
+
+
+
+### Malicious package detection
+
+| Language | Extension | Publisher | Tools |
+| --- | --- | --- | --- |
+| C# | `packages.lock.json` | NuGet | Trivy |
+| Go | `go.mod` | github.com | Trivy |
+| Java | `pom.xml`, `gradle.lockfile` | maven | Trivy |
+| JavaScript | `package.json`, `package-lock.json` | npm | Trivy |
+| Kotlin | `pom.xml`, `gradle.lockfile` | maven | Trivy |
+| Python | `requirements.txt` (pip), `Pipfile.lock` (pipenv) | PyPI | Trivy|
+| Ruby | `Gemfile.lock` | rubygems.org | Trivy |
+| Rust | `Cargo.lock` | crates.io | Trivy |
+| Scala | `build.sbt.lock` | maven | Trivy |
+| TypeScript | `package.json`, `package-lock.json` | npm | Trivy |
+
+### License scanning
+
+| Language | Extensions | Tool |
+| --- | --- | --- |
+| JavaScript | `package-lock.json` (npm) | Trivy |
+| PHP | `composer.lock` (Composer) | Trivy |
+| Python | `requirements.txt` (pip), `Pipfile.lock` (pipenv), `poetry.lock` (Poetry), `uv.lock` (UV) | Trivy |
+| TypeScript | `package-lock.json` (npm) | Trivy |
+
+</div>
+
+## Docker images of supported tools
+
+Codacy adds support for new languages and tools by using [a Docker image to run each tool](https://github.com/codacy/codacy-example-tool).
+
+The following table lists the Codacy GitHub repositories corresponding to each supported tool. Use these repositories to check the extra plugins supported by each tool or to submit GitHub issues related to each tool. To learn more about the tool versions used by Codacy, [see the latest release notes](../release-notes/).
+
+<table>
+<thead>
+<tr>
+<th><strong>Tool name</strong></th>
+<th><strong>Codacy GitHub repository</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://gitlab.com/opennota/check">aligncheck</a> [^client-side]</td>
+<td><a href="https://github.com/codacy/codacy-aligncheck" class="skip-vale">codacy/codacy-aligncheck</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/crystal-ameba/ameba">Ameba</a></td>
+<td><a href="https://github.com/codacy/codacy-ameba" class="skip-vale">codacy/codacy-ameba</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/PyCQA/bandit">Bandit</a></td>
+<td><a href="https://github.com/codacy/codacy-bandit" class="skip-vale">codacy/codacy-bandit</a></td>
+</tr>
+<tr>
+<td><a href="https://brakemanscanner.org/">Brakeman</a> [^semgrep-brakeman]</td>
+<td><a href="https://github.com/codacy/codacy-brakeman" class="skip-vale">codacy/codacy-brakeman</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/bridgecrewio/checkov/">Checkov</a></td>
+<td><a href="https://github.com/codacy/codacy-checkov" class="skip-vale">codacy/codacy-checkov</a></td>
+</tr>
+<tr>
+<td><a href="https://checkstyle.sourceforge.io/">Checkstyle</a></td>
+<td><a href="https://github.com/codacy/codacy-checkstyle" class="skip-vale">codacy/codacy-checkstyle</a></td>
+</tr>
+<tr>
+<td><a href="https://clang.llvm.org/extra/clang-tidy/">Clang-Tidy</a> [^client-side]</td>
+<td><a href="https://github.com/codacy/codacy-clang-tidy" class="skip-vale">codacy/codacy-clang-tidy</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/codacy/codacy-scalameta">Codacy Scalameta Pro</a></td>
+<td><a href="https://github.com/codacy/codacy-scalameta" class="skip-vale">codacy/codacy-scalameta</a></td>
+</tr>
+<tr>
+<td><a href="https://codenarc.org/">CodeNarc</a></td>
+<td><a href="https://github.com/codacy/codacy-codenarc" class="skip-vale">codacy/codacy-codenarc</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/clutchski/coffeelint">CoffeeLint</a></td>
+<td><a href="https://github.com/codacy/codacy-coffeelint" class="skip-vale">codacy/codacy-coffeelint</a></td>
+</tr>
+<tr>
+<td><a href="http://cppcheck.sourceforge.net/">Cppcheck</a> [^cppcheck-misra]</td>
+<td><a href="https://github.com/codacy/codacy-cppcheck" class="skip-vale">codacy/codacy-cppcheck</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/rrrene/credo">Credo</a></td>
+<td><a href="https://github.com/codacy/codacy-credo" class="skip-vale">codacy/codacy-credo</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/dart-lang/sdk/tree/main/pkg/analyzer_cli">dartanalyzer</a> [^dart-limitations]</td>
+<td><a href="https://github.com/codacy/codacy-dartanalyzer" class="skip-vale">codacy/codacy-dartanalyzer</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/tsenart/deadcode">deadcode</a> [^client-side]</td>
+<td><a href="https://github.com/codacy/codacy-deadcode" class="skip-vale">codacy/codacy-deadcode</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/arturbosch/detekt">detekt</a></td>
+<td><a href="https://github.com/codacy/codacy-detekt" class="skip-vale">codacy/codacy-detekt</a></td>
+</tr>
+<tr>
+<td><a href="https://eslint.org/">ESLint</a> [^complexity-limitations]</td>
+<td><a href="https://github.com/codacy/codacy-eslint" class="skip-vale">codacy/codacy-eslint</a></td>
+</tr>
+<tr>
+<td><a href="https://dwheeler.com/flawfinder/">Flawfinder</a></td>
+<td><a href="https://github.com/codacy/codacy-flawfinder" class="skip-vale">codacy/codacy-flawfinder</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/securego/gosec">Gosec</a> [^client-side]</td>
+<td><a href="https://github.com/codacy/codacy-gosec" class="skip-vale">codacy/codacy-gosec</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/hadolint/hadolint">Hadolint</a></td>
+<td><a href="https://github.com/codacy/codacy-hadolint" class="skip-vale">codacy/codacy-hadolint</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/FasterXML/jackson-core">Jackson Linter</a></td>
+<td><a href="https://github.com/codacy/codacy-jackson-linter" class="skip-vale">codacy/codacy-jackson-linter</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/terryyin/lizard">Lizard</a></td>
+<td><a href="https://github.com/codacy/codacy-lizard" class="skip-vale">codacy/codacy-lizard</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a></td>
+<td><a href="https://github.com/codacy/codacy-markdownlint" class="skip-vale">codacy/codacy-markdownlint</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/squizlabs/PHP_CodeSniffer">PHP_CodeSniffer</a></td>
+<td><a href="https://github.com/codacy/codacy-codesniffer" class="skip-vale">codacy/codacy-codesniffer</a></td>
+</tr>
+<tr>
+<td><a href="https://phpmd.org/">PHP Mess Detector</a></td>
+<td><a href="https://github.com/codacy/codacy-phpmd" class="skip-vale">codacy/codacy-phpmd</a></td>
+</tr>
+<tr>
+<td><a href="https://pmd.github.io/">PMD</a> [^complexity-limitations]</td>
+<td><a href="https://github.com/codacy/codacy-pmd7" class="skip-vale">codacy/codacy-pmd7</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/landscapeio/prospector2">Prospector</a></td>
+<td><a href="https://github.com/codacy/codacy-prospector" class="skip-vale">codacy/codacy-prospector</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/PowerShell/PSScriptAnalyzer">PSScriptAnalyser</a></td>
+<td><a href="https://github.com/codacy/codacy-psscriptanalyzer" class="skip-vale">codacy/codacy-psscriptanalyzer</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/pylint-dev/pylint">Pylint</a></td>
+<td><a href="https://github.com/codacy/codacy-pylint-python3" class="skip-vale">codacy/codacy-pylint-python3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/remarkjs/remark-lint">remark-lint</a></td>
+<td><a href="https://github.com/codacy/codacy-remark-lint" class="skip-vale">codacy/codacy-remark-lint</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/mgechev/revive">Revive</a></td>
+<td><a href="https://github.com/codacy/codacy-gorevive" class="skip-vale">codacy/codacy-gorevive</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/rubocop/rubocop">RuboCop</a> [^complexity-limitations]</td>
+<td><a href="https://github.com/codacy/codacy-rubocop" class="skip-vale">codacy/codacy-rubocop</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/astral-sh/ruff">Ruff</a></td>
+<td><a href="https://github.com/codacy/codacy-ruff" class="skip-vale">codacy/codacy-ruff</a></td>
+</tr>
+<tr>
+<td><a href="http://www.scalastyle.org/">Scalastyle</a></td>
+<td><a href="https://github.com/codacy/codacy-scalastyle" class="skip-vale">codacy/codacy-scalastyle</a></td>
+</tr>
+<tr>
+<td><a href="https://semgrep.dev/">Semgrep</a> [^semgrep]</td>
+<td><a href="https://github.com/codacy/codacy-semgrep" class="skip-vale">codacy/codacy-semgrep</a></td>
+</tr>
+<tr>
+<td><a href="https://www.shellcheck.net/">ShellCheck</a></td>
+<td><a href="https://github.com/codacy/codacy-shellcheck" class="skip-vale">codacy/codacy-shellcheck</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/SonarSource/sonar-dotnet">SonarC#</a></td>
+<td><a href="https://github.com/codacy/codacy-sonar-csharp" class="skip-vale">codacy/codacy-sonar-csharp</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/SonarSource/sonar-dotnet">SonarVB</a></td>
+<td><a href="https://github.com/codacy/codacy-sonar-visual-basic" class="skip-vale">codacy/codacy-sonar-visual-basic</a></td>
+</tr>
+<tr>
+<td><a href="https://stoplight.io/open-source/spectral/">Spectral</a></td>
+<td><a href="https://github.com/codacy/codacy-spectral" class="skip-vale">codacy/codacy-spectral</a></td>
+</tr>
+<tr>
+<td><a href="https://spotbugs.github.io/">SpotBugs</a> [^client-side]</td>
+<td><a href="https://github.com/codacy/codacy-spotbugs" class="skip-vale">codacy/codacy-spotbugs</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/purcell/sqlint">SQLint</a></td>
+<td><a href="https://github.com/codacy/codacy-sqlint" class="skip-vale">codacy/codacy-sqlint</a></td>
+</tr>
+<tr>
+<td><a href="https://staticcheck.io">Staticcheck</a> [^client-side]</td>
+<td><a href="https://github.com/codacy/codacy-staticcheck" class="skip-vale">codacy/codacy-staticcheck</a></td>
+</tr>
+<tr>
+<td><a href="https://stylelint.io/">Stylelint</a></td>
+<td><a href="https://github.com/codacy/codacy-stylelint" class="skip-vale">codacy/codacy-stylelint</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/realm/SwiftLint">SwiftLint</a> [^complexity-limitations] [^swiftlint-complexity]</td>
+<td><a href="https://github.com/codacy/codacy-swiftlint" class="skip-vale">codacy/codacy-swiftlint</a></td>
+</tr>
+<tr>
+<td><a href="https://trivy.dev">Trivy</a></td>
+<td><a href="https://github.com/codacy/codacy-trivy/" class="skip-vale">codacy/codacy-trivy</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/tsqllint/tsqllint/">TSQLLint</a></td>
+<td><a href="https://github.com/codacy/codacy-tsqllint" class="skip-vale">codacy/codacy-tsqllint</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/microsoft/Microsoft.Unity.Analyzers">Unity Roslyn Analyzers</a> [^client-side]</td>
+<td><a href="https://github.com/codacy/codacy-roslyn" class="skip-vale">codacy/codacy-roslyn</a></td>
+</tr>
+</tbody>
+</table>
+
+[^semgrep]: Semgrep supports additional security rules when signing up for [Semgrep Pro](https://semgrep.dev/pricing/). This tool doesn't support [custom file extensions](../repositories-configure/languages#configuring-file-extensions).
+[^yaml-only]: Currently, only YAML file scanning is supported on this platform.
+[^client-side]: Supported as a [client-side tool](../repositories-configure/local-analysis/client-side-tools).
+[^cppcheck-misra]: Currently, Cppcheck only supports the MISRA guidelines for C.
+[^dart-limitations]: Currently, Codacy only supports including the packages [lints](https://pub.dev/packages/lints) and [<span class="skip-vale">flutter_lints</span>](https://pub.dev/packages/flutter_lints) on dartanalyzer configuration files.
+[^complexity-limitations]: Doesn't calculate [the number of methods and the complexity per method](../repositories/files#file-details) for each file.
+[^semgrep-brakeman]: Due to licensing limitations, Codacy doesn't support the latest version of Brakeman. To analyze your Ruby code for the latest security vulnerabilities, use [Semgrep](https://semgrep.dev/), which provides comprehensive and up-to-date security scanning.
+[^swiftlint-complexity]: Supports [reporting warnings or errors](https://realm.github.io/SwiftLint/cyclomatic_complexity.html) on functions above specific complexity thresholds. Enable the rule **Cyclomatic Complexity** on the [Code patterns page](../repositories-configure/configuring-code-patterns), or use a [configuration file](https://realm.github.io/SwiftLint/index.html#configuration) to customize the thresholds.
+[^scala-dependencies]: Requires the [sbt-dependency-lock](https://github.com/stringbean/sbt-dependency-lock) plugin for generating the lockfile.
+[^different-tools]: Codacy may use a different version of this tool for measuring complexity and duplication.
+[^malicious-packages-detection]: Malicious packages identified in the [OpenSSF Malicious Packages database](https://github.com/ossf/malicious-packages).
+[^suggest-fixes]: Supports [suggesting fixes](../repositories-configure/integrations/github-integration#suggest-fixes) for identified issues.
+
+## See also
+
+-   [Codacy quickstart (5 min)](./codacy-quickstart)
+-   [Client-side tools](../repositories-configure/local-analysis/client-side-tools)
+-   [Which metrics does Codacy calculate?](../faq/code-analysis/which-metrics-does-codacy-calculate)

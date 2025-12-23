@@ -19,10 +19,10 @@ To integrate Codacy with your Git workflow, follow these steps:
 1.  [Blocking merging pull requests](#blocking-pull-requests) (optional)
 
 ## 1. Configuring the quality gate rules \{#configuring-gate\}
-[Review and adjust the quality gates](../repositories-configure/adjusting-quality-gates.md) of your repository to decide which pull requests should fail the Codacy quality gate.
+[Review and adjust the quality gates](../repositories-configure/adjusting-quality-gates) of your repository to decide which pull requests should fail the Codacy quality gate.
 
 :::tip
-The [default quality gate rules](../organizations/using-gate-policies.md) are designed to help maintain the current code quality of your repository. In particular, the default value for the coverage rule might be demanding. Depending on factors such as the current code quality of your repository and the maturity of your team practices, consider the balance between implementing stricter quality gates and the possibility of delaying or blocking the development progress.
+The [default quality gate rules](../organizations/using-gate-policies) are designed to help maintain the current code quality of your repository. In particular, the default value for the coverage rule might be demanding. Depending on factors such as the current code quality of your repository and the maturity of your team practices, consider the balance between implementing stricter quality gates and the possibility of delaying or blocking the development progress.
 
 Codacy generally recommends that on a first stage you configure rules that focus on stopping new critical issues from entering your code base, such as:
 
@@ -38,7 +38,7 @@ Codacy generally recommends that on a first stage you configure rules that focus
 ![Adjusting the quality gates](../repositories-configure/images/quality-settings-gates.png)
 
 ## 2. Configuring the Git provider integration \{#git-provider-integration\}
-Make sure you enable the option **Status checks** ([GitHub](../repositories-configure/integrations/github-integration.md#status-checks)) or **Pull request status** ([GitLab](../repositories-configure/integrations/gitlab-integration.md#pull-request-status) and [Bitbucket](../repositories-configure/integrations/bitbucket-integration.md#pull-request-status)).
+Make sure you enable the option **Status checks** ([GitHub](../repositories-configure/integrations/github-integration#status-checks)) or **Pull request status** ([GitLab](../repositories-configure/integrations/gitlab-integration#pull-request-status) and [Bitbucket](../repositories-configure/integrations/bitbucket-integration#pull-request-status)).
 
 <DefaultGitProviderSettingsTip />
 
@@ -51,7 +51,7 @@ Once you've tested out Codacy for a while and you're happy with the level of fee
 To eliminate any false positives that could inadvertently block the work of your team, it's important that before activating this feature you:
 
 -   Validate that Codacy is reporting the intended status on your pull requests
--   Double check you repository's [tool and code pattern settings](../repositories-configure/configuring-code-patterns.md) and [quality gate settings](../repositories-configure/adjusting-quality-gates.md)
+-   Double check you repository's [tool and code pattern settings](../repositories-configure/configuring-code-patterns) and [quality gate settings](../repositories-configure/adjusting-quality-gates)
 
 :::
 

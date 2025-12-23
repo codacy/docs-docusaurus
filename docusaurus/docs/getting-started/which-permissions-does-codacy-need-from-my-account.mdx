@@ -3,7 +3,6 @@ title: Which permissions does Codacy need from my account?
 description: Review the list of permissions that Codacy requires from your Git provider to analyze your code.
 ---
 
-
 Codacy Cloud uses the OAuth protocol to handle logins and supports the following providers:
 
 -   [GitHub Cloud](#github-cloud)
@@ -32,6 +31,7 @@ If you log in with GitHub, Codacy requires the following [app permissions](https
   <tbody>
     <tr>
       <td colspan="3"><strong>Repository permissions:</strong></td>
+    </tr>
     <tr>
       <td>Checks</td>
       <td>Read & Write</td>
@@ -81,9 +81,10 @@ If you log in with GitHub, Codacy requires the following [app permissions](https
       <td>Codacy retrieves information about organization members and teams to enforce permissions and user management.</td>
     </tr>
 	    <tr>
-	      <td colspan="3"><p><strong>User permissions:</strong></p>
-	                      <p>These permissions are granted on an individual user basis as part of the user authorization flow. They will be also be displayed during account installation for transparency.</p></td>
-	    </tr>
+	      <td colspan="3">
+          <strong>User permissions:</strong> <br />
+          These permissions are granted on an individual user basis as part of the user authorization flow. They will be also be displayed during account installation for transparency.
+        </td>
 	    </tr>
 	    <tr>
 	      <td>Email addresses</td>
@@ -190,7 +191,7 @@ To revoke the access from Codacy to one or more of the OAuth providers:
     -   [GitLab Cloud](https://docs.gitlab.com/ee/integration/oauth_provider.html#view-all-authorized-applications)
     -   [Bitbucket Cloud](https://support.atlassian.com/bitbucket-cloud/docs/bitbucket-cloud-apps-overview/#OAuth-consumer-permissions)
 
-After revoking an integration, Codacy will no longer be able to access or manipulate resources that require API calls, such as detecting new pull requests or adding comments to pull requests. However, Codacy will still be able to perform operations that only require using the Git protocol either via SSH or HTTPS, such as detecting new commits and calculating diffs. To remove your repositories from Codacy and stop the analysis you must [delete them from your Codacy account](../repositories-configure/removing-your-repository.md).
+After revoking an integration, Codacy will no longer be able to access or manipulate resources that require API calls, such as detecting new pull requests or adding comments to pull requests. However, Codacy will still be able to perform operations that only require using the Git protocol either via SSH or HTTPS, such as detecting new commits and calculating diffs. To remove your repositories from Codacy and stop the analysis you must [delete them from your Codacy account](../repositories-configure/removing-your-repository).
 
 If you need to use an integration that you have previously revoked, log in again to Codacy with that integration so that Codacy can request the required permissions from the provider.
 
